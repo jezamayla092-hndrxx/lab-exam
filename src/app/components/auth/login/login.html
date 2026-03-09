@@ -1,0 +1,115 @@
+<div class="login-page">
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="login-shell">
+    <div class="visual-panel">
+      <div class="brand-badge">
+        <div class="brand-icon">◎</div>
+        <div>
+          <h3>Album Store</h3>
+          <p>Curated sound. Premium vibes.</p>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <span class="eyebrow">WELCOME BACK</span>
+        <h1>
+          Sign in to your
+          <span>music dashboard</span>
+        </h1>
+        <p>
+          Manage albums, orders, and history in one sleek control panel built for your store
+          experience.
+        </p>
+      </div>
+
+      <div class="vinyl-scene">
+        <div class="ring ring-lg"></div>
+        <div class="ring ring-md"></div>
+        <div class="ring ring-sm"></div>
+
+        <div class="vinyl-record">
+          <div class="record-center"></div>
+          <div class="shine"></div>
+        </div>
+
+        <div class="floating-card card-one">
+          <span class="label">Now Playing</span>
+          <h4>Midnight Echoes</h4>
+          <p>Lo-fi / Neon / Chillwave</p>
+        </div>
+
+        <div class="floating-card card-two">
+          <span class="label">Store Theme</span>
+          <h4>Dark Violet Pulse</h4>
+          <p>Animated UI Experience</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-panel">
+      <div class="form-card">
+        <div class="form-header">
+          <span class="mini-badge">Admin Access</span>
+          <h2>Login</h2>
+          <p>Enter your credentials to continue to the dashboard.</p>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <div class="field">
+            <label for="username">Username</label>
+            <div class="input-wrap">
+              <span class="input-icon">👤</span>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                placeholder="Enter username"
+                [(ngModel)]="username"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input
+                id="password"
+                name="password"
+                [type]="showPassword ? 'text' : 'password'"
+                placeholder="Enter password"
+                [(ngModel)]="password"
+                required
+              />
+              <button type="button" class="toggle-btn" (click)="togglePassword()">
+                {{ showPassword ? 'Hide' : 'Show' }}
+              </button>
+            </div>
+          </div>
+
+          <div class="extras">
+            <label class="remember">
+              <input type="checkbox" />
+              <span>Remember me</span>
+            </label>
+
+            <a href="javascript:void(0)">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="login-btn" [disabled]="loginForm.invalid || isLoading">
+            <span *ngIf="!isLoading">Enter Dashboard</span>
+            <span *ngIf="isLoading" class="loading-content">
+              <span class="spinner"></span>
+              Signing in...
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

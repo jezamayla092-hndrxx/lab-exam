@@ -1,0 +1,143 @@
+:host {
+  display: block;
+  color: #fff;
+}
+
+.history-page {
+  min-height: 100%;
+}
+
+.page-header {
+  margin-bottom: 28px;
+
+  h1 {
+    margin: 0 0 6px;
+    font-size: 2.1rem;
+    font-weight: 800;
+  }
+
+  p {
+    margin: 0;
+    color: #98a2c3;
+  }
+}
+
+.history-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.history-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 18px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(18, 20, 35, 0.96), rgba(12, 13, 25, 0.96));
+  border: 1px solid rgba(134, 101, 255, 0.12);
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.2);
+}
+
+.history-image-wrap {
+  min-height: 180px;
+}
+
+.history-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.history-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.history-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  h3 {
+    margin: 0 0 4px;
+    font-size: 1.35rem;
+  }
+
+  p {
+    margin: 0;
+    color: #a7b0cc;
+  }
+}
+
+.status-badge {
+  align-self: flex-start;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.18);
+  color: #86efac;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.history-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  color: #d6def6;
+}
+
+.history-actions {
+  margin-top: auto;
+}
+
+.delete-btn {
+  border: 0;
+  border-radius: 14px;
+  padding: 0.9rem 1.2rem;
+  background: rgba(239, 68, 68, 0.16);
+  color: #ffb4b4;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.empty-state {
+  min-height: 340px;
+  border: 1px dashed rgba(148, 163, 184, 0.22);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #9eabc9;
+  padding: 30px;
+
+  i {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: #a855f7;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    color: #fff;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .history-card {
+    grid-template-columns: 1fr;
+  }
+
+  .history-image-wrap {
+    min-height: 220px;
+  }
+}

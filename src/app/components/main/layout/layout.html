@@ -1,0 +1,84 @@
+<div class="layout-shell" [class.sidebar-collapsed]="!sidebarOpen">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="pi pi-play-circle"></i>
+      </div>
+      <div class="brand-text">
+        <h2>Album Store</h2>
+        <p>Chill music in a Premium vibes.</p>
+      </div>
+    </div>
+
+    <div class="menu-label">MENU</div>
+
+    <nav class="nav-menu">
+      <a routerLink="/albums" routerLinkActive="active" class="nav-item">
+        <i class="pi pi-box nav-icon"></i>
+        <span>Albums</span>
+      </a>
+
+      <a routerLink="/my-order" routerLinkActive="active" class="nav-item">
+        <i class="pi pi-shopping-cart nav-icon"></i>
+        <span>My Order</span>
+      </a>
+
+      <a routerLink="/order-history" routerLinkActive="active" class="nav-item">
+        <i class="pi pi-history nav-icon"></i>
+        <span>Order History</span>
+      </a>
+    </nav>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" (click)="toggleSidebar()" type="button">
+          <i class="pi pi-bars"></i>
+        </button>
+
+        <div class="search-box">
+          <i class="pi pi-search search-icon"></i>
+          <input type="text" placeholder="Search albums, artists..." />
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-btn" type="button">
+          <i class="pi pi-bell"></i>
+        </button>
+
+        <div class="profile-dropdown-wrapper" (click)="$event.stopPropagation()">
+          <button class="profile-btn" type="button" (click)="toggleProfileDropdown($event)">
+            <div class="avatar">
+              <i class="pi pi-user"></i>
+            </div>
+          </button>
+
+          <div class="profile-dropdown" *ngIf="profileDropdownOpen">
+            <button class="dropdown-item" type="button" (click)="onProfileClick()">
+              <i class="pi pi-user"></i>
+              <span>Profile</span>
+            </button>
+
+            <button class="dropdown-item" type="button" (click)="onSettingsClick()">
+              <i class="pi pi-cog"></i>
+              <span>Settings</span>
+            </button>
+
+            <div class="dropdown-divider"></div>
+
+            <button class="dropdown-item logout-item" type="button" (click)="logout()">
+              <i class="pi pi-sign-out"></i>
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

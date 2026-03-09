@@ -1,0 +1,61 @@
+<div class="order-page">
+  <div class="page-header">
+    <div>
+      <h1>My Order</h1>
+      <p>{{ orders.length }} items in your cart</p>
+    </div>
+
+    <div class="cart-total" *ngIf="orders.length > 0">
+      Total: {{ cartTotal | currency: 'PHP' : 'symbol' : '1.2-2' }}
+    </div>
+  </div>
+
+  <div *ngIf="orders.length > 0; else emptyCart" class="order-grid">
+    <div class="order-card" *ngFor="let order of orders">
+      <div class="order-image-wrap">
+        <img [src]="order.image" [alt]="order.title" class="order-image" />
+      </div>
+
+      <div class="order-content">
+        <div class="order-top">
+          <div>
+            <h3>{{ order.title }}</h3>
+            <p>{{ order.artist }}</p>
+          </div>
+          <span class="genre-badge">{{ order.genre }}</span>
+        </div>
+
+        <div class="order-info">
+          <span>Price: {{ order.price | currency: 'PHP' : 'symbol' : '1.2-2' }}</span>
+          <span>Total: {{ order.total | currency: 'PHP' : 'symbol' : '1.2-2' }}</span>
+        </div>
+
+        <div class="qty-row">
+          <button class="qty-btn" (click)="decreaseQty(order)">-</button>
+          <span class="qty-value">{{ order.quantity }}</span>
+          <button class="qty-btn" (click)="increaseQty(order)">+</button>
+        </div>
+
+        <div class="order-actions">
+          <button class="remove-btn" (click)="removeOrder(order)">
+            <i class="pi pi-trash"></i>
+            <span>Remove</span>
+          </button>
+
+          <button class="buy-btn" (click)="checkoutOrder(order)">
+            <i class="pi pi-credit-card"></i>
+            <span>Buy Now</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <div class="empty-state">
+      <i class="pi pi-shopping-cart"></i>
+      <h3>Your cart is empty</h3>
+      <p>Browse albums and add them to your cart.</p>
+    </div>
+  </ng-template>
+</div>

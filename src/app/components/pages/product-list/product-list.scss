@@ -1,0 +1,468 @@
+:host {
+  display: block;
+  color: #fff;
+}
+
+.albums-page {
+  min-height: 100%;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 28px;
+
+  h1 {
+    margin: 0 0 6px;
+    font-size: 2.1rem;
+    font-weight: 800;
+  }
+
+  p {
+    margin: 0;
+    color: #98a2c3;
+    font-size: 1rem;
+  }
+}
+
+.add-btn {
+  border: 0 !important;
+  border-radius: 16px !important;
+  padding: 0.9rem 1.3rem !important;
+  background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+  color: #fff !important;
+  box-shadow: 0 12px 24px rgba(124, 58, 237, 0.28);
+
+  .pi {
+    margin-right: 0.5rem;
+  }
+}
+
+.albums-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 20px;
+}
+
+.album-card {
+  background: linear-gradient(180deg, rgba(18, 20, 35, 0.96), rgba(12, 13, 25, 0.96));
+  border: 1px solid rgba(134, 101, 255, 0.12);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.album-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(76, 29, 149, 0.28);
+}
+
+.album-image-wrap {
+  position: relative;
+  height: 240px;
+  background: #111;
+  overflow: hidden;
+}
+
+.album-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.album-card:hover .album-image {
+  transform: scale(1.06);
+}
+
+.cart-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%) translateY(14px);
+  opacity: 0;
+  pointer-events: none;
+  border: 0;
+  border-radius: 14px;
+  padding: 0.85rem 1.2rem;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: #fff;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 14px 28px rgba(124, 58, 237, 0.32);
+  transition: all 0.25s ease;
+}
+
+.album-card:hover .cart-btn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.cart-btn:hover {
+  filter: brightness(1.05);
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-action {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #c7cfeb;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.icon-action:hover {
+  background: rgba(124, 58, 237, 0.18);
+  color: #fff;
+}
+
+.icon-action.delete:hover {
+  background: rgba(239, 68, 68, 0.16);
+  color: #ff8f8f;
+}
+.genre-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.75);
+  color: #efe9ff;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.album-content {
+  padding: 16px 16px 18px;
+}
+
+.album-content h3 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.artist {
+  margin: 0 0 14px;
+  color: #a7b0cc;
+  font-size: 0.95rem;
+}
+
+.album-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.price {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-action {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #c7cfeb;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.icon-action:hover {
+  background: rgba(124, 58, 237, 0.18);
+  color: #fff;
+}
+
+.icon-action.delete:hover {
+  background: rgba(239, 68, 68, 0.16);
+  color: #ff8f8f;
+}
+
+.empty-state {
+  min-height: 340px;
+  border: 1px dashed rgba(148, 163, 184, 0.22);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #9eabc9;
+  padding: 30px;
+
+  i {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: #a855f7;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    color: #fff;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.form-row {
+  display: grid;
+  gap: 14px;
+}
+
+.form-row.two-col {
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-row.three-col {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    color: rgba(215, 222, 246, 0.58);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+}
+
+.upload-box {
+  min-height: 68px;
+  border: 1px dashed rgba(134, 101, 255, 0.22);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.025);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #9fa8c9;
+
+  i {
+    font-size: 1.15rem;
+    color: #c9b8ff;
+  }
+
+  span {
+    font-size: 0.92rem;
+  }
+}
+
+.divider-text {
+  position: relative;
+  text-align: center;
+  color: rgba(159, 168, 201, 0.55);
+  font-size: 0.78rem;
+  margin: -2px 0 0;
+
+  span {
+    position: relative;
+    z-index: 1;
+    padding: 0 12px;
+    background: #0d0f1b;
+  }
+}
+
+.divider-text::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  transform: translateY(-50%);
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+:host ::ng-deep .album-dialog.p-dialog {
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top center, rgba(124, 58, 237, 0.08), transparent 35%),
+    linear-gradient(135deg, #0b0d18, #111426 55%, #0d0f1b);
+  color: #fff;
+  border: 1px solid rgba(134, 101, 255, 0.16);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+:host ::ng-deep .album-dialog .p-dialog-header,
+:host ::ng-deep .album-dialog .p-dialog-content,
+:host ::ng-deep .album-dialog .p-dialog-footer {
+  background: transparent;
+  color: #fff;
+}
+
+:host ::ng-deep .album-dialog .p-dialog-header {
+  padding: 1.8rem 1.8rem 0.6rem;
+  border-bottom: 0;
+}
+
+:host ::ng-deep .album-dialog .p-dialog-title {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+:host ::ng-deep .album-dialog .p-dialog-content {
+  padding: 1rem 1.8rem 1.2rem;
+  border: 0;
+  overflow: visible !important;
+}
+
+:host ::ng-deep .album-dialog .p-dialog-footer {
+  padding: 0 1.8rem 1.5rem;
+  border-top: 0;
+}
+
+:host ::ng-deep .album-dialog .p-dialog-header-icon {
+  color: #8c92ab;
+}
+
+:host ::ng-deep .album-dialog .p-dialog-header-icon:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+:host ::ng-deep .p-inputtext,
+:host ::ng-deep textarea[pTextarea],
+:host ::ng-deep .p-select {
+  width: 100%;
+  min-height: 54px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(134, 101, 255, 0.14);
+  color: #fff;
+  box-sizing: border-box;
+}
+
+:host ::ng-deep .p-inputtext {
+  padding: 0.95rem 1rem !important;
+}
+
+:host ::ng-deep textarea[pTextarea] {
+  min-height: 110px;
+  resize: none;
+  padding: 1rem !important;
+  line-height: 1.5;
+}
+
+:host ::ng-deep .p-select {
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep .p-select-label {
+  padding: 0.95rem 1rem !important;
+  color: #fff;
+}
+
+:host ::ng-deep .p-select-trigger {
+  width: 3rem;
+  color: #9aa2bf;
+}
+
+:host ::ng-deep .p-inputtext::placeholder,
+:host ::ng-deep textarea[pTextarea]::placeholder,
+:host ::ng-deep .p-select-label.p-placeholder {
+  color: #6f7693;
+}
+
+:host ::ng-deep .p-inputtext:enabled:focus,
+:host ::ng-deep textarea[pTextarea]:enabled:focus,
+:host ::ng-deep .p-select.p-focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 1px #8b5cf6;
+}
+
+:host ::ng-deep .p-select-overlay {
+  background: #141827;
+  border: 1px solid rgba(134, 101, 255, 0.16);
+  color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+:host ::ng-deep .p-select-option {
+  color: #fff;
+}
+
+:host ::ng-deep .p-select-option:hover {
+  background: rgba(124, 58, 237, 0.18);
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .album-image-wrap {
+    height: 220px;
+  }
+
+  .form-row.two-col,
+  .form-row.three-col {
+    grid-template-columns: 1fr;
+  }
+
+  :host ::ng-deep .album-dialog .p-dialog-title {
+    font-size: 1.6rem;
+  }
+}

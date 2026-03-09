@@ -1,0 +1,156 @@
+<div class="albums-page">
+  <div class="page-header">
+    <div>
+      <h1>Albums</h1>
+      <p>{{ filteredProducts.length }} albums available</p>
+    </div>
+
+    <button pButton type="button" class="add-btn" (click)="openAddDialog()">
+      <i class="pi pi-plus"></i>
+      <span>Add Album</span>
+    </button>
+  </div>
+
+  <div class="albums-grid" *ngIf="filteredProducts.length > 0; else emptyState">
+    <div class="album-card" *ngFor="let product of filteredProducts; trackBy: trackById">
+      <div class="album-image-wrap">
+        <img [src]="product.image" [alt]="product.title" class="album-image" />
+        <span class="genre-badge">{{ product.genre }}</span>
+
+        <button type="button" class="cart-btn" (click)="addToCart(product)">
+          <i class="pi pi-shopping-cart"></i>
+          <span>Add to Cart</span>
+        </button>
+      </div>
+
+      <div class="album-content">
+        <h3>{{ product.title }}</h3>
+        <p class="artist">{{ product.artist }}</p>
+
+        <div class="album-footer">
+          <div class="price">{{ product.price | currency: 'PHP' : 'symbol' : '1.2-2' }}</div>
+
+          <div class="card-actions">
+            <button
+              type="button"
+              class="icon-action"
+              (click)="openEditDialog(product)"
+              title="Edit"
+            >
+              <i class="pi pi-pencil"></i>
+            </button>
+
+            <button
+              type="button"
+              class="icon-action delete"
+              (click)="confirmDelete(product)"
+              title="Delete"
+            >
+              <i class="pi pi-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <i class="pi pi-box"></i>
+      <h3>No albums found</h3>
+      <p>Try another search or add a new album.</p>
+    </div>
+  </ng-template>
+</div>
+
+<p-dialog
+  [(visible)]="dialogVisible"
+  [modal]="true"
+  [closable]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [dismissableMask]="true"
+  [style]="{ width: '32rem', 'max-height': '95vh' }"
+  [contentStyle]="{ overflow: 'visible' }"
+  [breakpoints]="{ '960px': '90vw', '640px': '96vw' }"
+  [header]="isEditMode ? 'Edit Album' : 'Add New Album'"
+  styleClass="album-dialog"
+>
+  <div class="dialog-form">
+    <div class="form-row two-col">
+      <div class="form-group">
+        <label>TITLE</label>
+        <input pInputText [(ngModel)]="form.title" placeholder="Album title" />
+      </div>
+
+      <div class="form-group">
+        <label>ARTIST</label>
+        <input pInputText [(ngModel)]="form.artist" placeholder="Artist name" />
+      </div>
+    </div>
+
+    <div class="form-row three-col">
+      <div class="form-group">
+        <label>GENRE</label>
+        <p-select
+          [options]="genreOptions"
+          [(ngModel)]="form.genre"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Select genre"
+          appendTo="body"
+        >
+        </p-select>
+      </div>
+
+      <div class="form-group">
+        <label>PRICE (₱)</label>
+        <input pInputText type="number" [(ngModel)]="form.price" placeholder="12.99" />
+      </div>
+
+      <div class="form-group">
+        <label>YEAR</label>
+        <input pInputText type="number" [(ngModel)]="form.year" placeholder="2026" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>COVER IMAGE</label>
+      <div class="upload-box">
+        <i class="pi pi-upload"></i>
+        <span>Paste album image link below</span>
+      </div>
+    </div>
+
+    <div class="divider-text">
+      <span>or paste a link</span>
+    </div>
+
+    <div class="form-group">
+      <input pInputText [(ngModel)]="form.image" placeholder="https://..." />
+    </div>
+
+    <div class="form-group">
+      <label>DESCRIPTION</label>
+      <textarea
+        pTextarea
+        rows="4"
+        [(ngModel)]="form.description"
+        placeholder="Short description..."
+      ></textarea>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <div class="dialog-footer">
+      <button pButton type="button" class="cancel-btn" (click)="dialogVisible = false">
+        Cancel
+      </button>
+
+      <button pButton type="button" class="save-btn" (click)="saveProduct()">
+        <i class="pi pi-save"></i>
+        <span>{{ isEditMode ? 'Update' : 'Create' }}</span>
+      </button>
+    </div>
+  </ng-template>
+</p-dialog>

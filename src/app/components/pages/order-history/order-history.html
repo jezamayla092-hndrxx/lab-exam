@@ -1,0 +1,48 @@
+<div class="history-page">
+  <div class="page-header">
+    <div>
+      <h1>Order History</h1>
+      <p>{{ history.length }} orders completed</p>
+    </div>
+  </div>
+
+  <div *ngIf="history.length > 0; else emptyHistory" class="history-grid">
+    <div class="history-card" *ngFor="let item of history">
+      <div class="history-image-wrap">
+        <img [src]="item.image" [alt]="item.title" class="history-image" />
+      </div>
+
+      <div class="history-content">
+        <div class="history-top">
+          <div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.artist }}</p>
+          </div>
+          <span class="status-badge">{{ item.status }}</span>
+        </div>
+
+        <div class="history-meta">
+          <span>Genre: {{ item.genre }}</span>
+          <span>Qty: {{ item.quantity }}</span>
+          <span>Total: {{ item.total | currency: 'PHP' : 'symbol' : '1.2-2' }}</span>
+          <span>Date: {{ item.orderedAt | date: 'medium' }}</span>
+        </div>
+
+        <div class="history-actions">
+          <button class="delete-btn" (click)="deleteHistoryItem(item)">
+            <i class="pi pi-trash"></i>
+            <span>Delete Record</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #emptyHistory>
+    <div class="empty-state">
+      <i class="pi pi-history"></i>
+      <h3>No orders yet</h3>
+      <p>Your completed orders will appear here.</p>
+    </div>
+  </ng-template>
+</div>
